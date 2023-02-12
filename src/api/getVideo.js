@@ -25,6 +25,7 @@ export const getvideo = async () => {
         const resp = await fetch(`${url}${buscar(titulo)}`)
         const { items } = await resp.json();
         console.log(items)
+        console.log(resp)
         return resp;
     }
 
