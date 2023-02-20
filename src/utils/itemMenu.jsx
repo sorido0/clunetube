@@ -15,7 +15,7 @@ export const itemMenu = [
     { name: 'Principal', icon: <AiOutlineHome />, type: "inicio" },
     // { name: "Shorts", icon: <AiFillMobile />, type: "inicio" },
     { name: "Tendencias", icon: <AiOutlineFire />, type: "inicio", dividir: true },
-    { name: "Musica", icon: <IoMdMusicalNote />, type: "categoria" },
+    // { name: "Musica", icon: <IoMdMusicalNote />, type: "categoria" },
     // { name: "Live", icon: <MdLiveTv />, type: "categoria" },
     { name: "Videosjuegos", icon: <IoLogoGameControllerB />, type: "categoria" },
     { name: "Deportes", icon: <GiTrophyCup />, type: "categoria" },

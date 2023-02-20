@@ -1,49 +1,49 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { AiFillCheckCircle } from 'react-icons/ai'
-import { DurarionVideo, VideoFecha } from '../shared'
+import { Link } from 'react-router-dom';
+import { UserContext } from '../contexts';
+import { DurarionVideo } from '../shared'
+
+export const VideoRelacionados = ({ video }) => {
+
+    const { sadas } = useContext(UserContext);
+    //console.log("Vine")
+    const uno = `${video?.stats?.views}`;
 
 
+    return (
+        <Link to={`/videoplayer/${video?.videoId}`} >
 
-
-export const VideoRelacionados = ({ title, channel, image, id, key, time, virificado, fecha, reproducciones  }) => {
-  return (
-    <div className='flex flex-col rounded-xl mb-8 md:rounded-xl sm:rounded-xl cursor-pointer hover:bg-[#FFFFFF14]' key={key}>
-            <div className='relative h-48 rounded-xl md:h-40 md:rounded-xl sm:rounded-xl overflow-hidden'key={id}>
-                <img
-                    className='h-full w-full object-cover'
-                    src={image}
-                    alt={title}
-                />
-                <DurarionVideo time={time} key={key} fecha={fecha}/>
-            </div>
-            <div className="flex text-white mt-3">
-                <div className='flex items-start'>
-                    <div className="flex h-9 w-9 rounded-full overflow-hidden">
-                        <img 
-                            className="h-full w-full object-cover"
-                            src={image}
-                            alt={channel}
-                        />
-                    </div>
+            <div className='flex mb-3 cursor-pointer hover:bg-[#FFFFFF14] ' key={video?.videoId}>
+                <div className='relative h-40 lg:h-20 xl:h-24 w-40 min-w-[168px] lg:w-32 lg:min-w-[128px] xl:w-40 xl:min-w-[168px] rounded-xl bg-slate-800 md:rounded-xl sm:rounded-xl overflow-hidden'>
+                    <img
+                        className='h-full w-full object-cover'
+                        src={video?.thumbnails[0]?.url}
+                        alt={video?.title}
+                    />
+                    { video?.lengthSeconds && <DurarionVideo time={video?.lengthSeconds} />}
                 </div>
-                <div className="flex flex-col ml-3 overflow-hidden" >
-                    <span className='text-sm font-bold line-clamp-2 text-white'>
-                        {title}
+                <div className="flex flex-col ml-3 overflow-hidden text-white mt-3">
+                    <span className='text-sm lg:text-xs xl:text-sm font-bold line-clamp-2 '>
+                        {video?.title}
                     </span>
-                    <span className='text-[12px] font-semibold mt-2 text-white/[0.7] flex items-center'>
-                        {channel}
-                        { virificado ===  true ? <AiFillCheckCircle className='text-white/[0.5] text-[12px] ml-1'/> : null }
+                    <span className='text-[12px] lg:text-[10px] xl:text-[12px] font-semibold mt-2 text-white/[0.7] flex items-centerfle'>
+                        {video?.author?.title}
+                        {
+                            video?.author?.badges[0]?.text === "Verified" && (<AiFillCheckCircle className='text-blue-500 text-[12px] ml-1' />)
+                        }
                     </span>
 
-                    <div className="flex text-[12px] font-semibold text-white/[0.7] truncate">
+                    <div className="flex text-[12px] lg:text-[10px] xl:text-[12px] font-semibold text-white/[0.7] truncate overflow-hidden">
                         <span>
-                            {reproducciones} vistas -  
+                            {`${sadas(uno)} `} vistas -
                         </span>
-                        {/* <span className="flex text-[24px] leading-none font-bold text-white/[0.7] relative  mx-1">.</span> */}
-                        <VideoFecha fecha={fecha}/>
+                        <span className='truncate'>  {video?.publishedTimeText} </span>
                     </div>
+
                 </div>
             </div>
-        </div>
-  )
+
+        </Link>
+    )
 }

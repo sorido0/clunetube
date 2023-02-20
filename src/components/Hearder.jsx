@@ -1,8 +1,9 @@
 
 import { useContext } from 'react';
 
-
+import youtube from '../assets/youtube.svg';
 import { AiOutlineMenu, AiOutlineSearch, AiOutlineVideoCameraAdd, AiOutlineBell } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 import { UserContext } from '../contexts';
 import { Loading } from '../shared';
 
@@ -10,15 +11,14 @@ import { Loading } from '../shared';
 export const Hearder = () => {
 
 
-    const { mostrarMenu, respVideoInicial } = useContext(UserContext);
 
 
-
+    const { mostrarMenu, respVideoInicial, loading } = useContext(UserContext);
 
     return (
         <div className="sticky pt-2 pb-2 top-0 z-10 flex flex-row items-center justify-between h-14 px-4 md:px-5 bg-white dark:bg-black ">
              {
-                !respVideoInicial?  <Loading /> : null  
+                loading?  <Loading /> : null  
              }
 
             <div className="flex h-5 items-center">
@@ -31,9 +31,15 @@ export const Hearder = () => {
 
                  <AiOutlineMenu className='text-white mr-2 cursor-pointer hover:bg-gray-800' /> 
                 </div>
-                <img className="h-full hidden dark:md:block " src="src/assets/youtube.svg" alt="youtube" />
-                <img className="h-full md:hidden" src="src/assets/youtube.svg" alt="youtubeMovil" />
-                <h1 className='text-white text-center text-xl'>Youtube</h1>
+                
+                <img className="h-full hidden dark:md:block " src={youtube} alt="youtube" />
+                <img className="h-full m-1 md:hidden" src={youtube} alt="youtubeMovil" />
+                <h1 className='text-white text-center text-xl'> 
+                    <Link to='/'>
+                    Youtube
+                    </Link>
+                </h1>
+               
 
             </div>
             <div className='group flex items-center'>
