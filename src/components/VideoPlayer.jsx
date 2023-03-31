@@ -75,12 +75,12 @@ export const VideoPlayer = () => {
                             className="rounded-lg"
 
                         />
-                        <div className="text-white font-bold text-sm md:text-xl mt-4 line-clamp-2">
+                        <div className="text-white font-bold text-sm md:text-xl mt-3 mb-3 line-clamp-2">
                             {!loading && video?.title || "Cargando..."}
                         </div>
                     </div>
 
-                    <div className="flex flex-col justify-between md:flex-row mt-11 p-2 rounded-xl bg-[#ffffff14]">
+                    <div className="flex flex-col justify-between md:flex-row mt-12 p-2 rounded-xl bg-[#ffffff14]">
                         <div className="flex">
                             <div className="flex items-start">
                                 <div className="flex h-11 w-11 rounded-full overflow-hidden">

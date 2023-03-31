@@ -9,19 +9,13 @@ import { LeftNavMenueItems } from './LeftNavMenueItems'
 
 export const LeftNav = () => {
 
-  const { mostrarMenu } = useContext(UserContext);
+  const { mostrarMenu, setCategoria } = useContext(UserContext);
 
   const [cualName, setcualName] = useState(
     {
       name: "",
     }
   )
-
-  const selectName = (name) => {
-    setcualName({
-      name: name
-    })
-  }
 
   return (
     <div className='mb:block w-[240px] overflow-y-auto h-[88%] bg-black absolute md:absolute z-10 translate-x-[-240] md:translate-x-0 transition-all '>
@@ -34,7 +28,7 @@ export const LeftNav = () => {
                 <LeftNavMenueItems
                   name={item.name}
                   icon={item.icon}
-                  action={() => { selectName(item.name) }}
+                  action={() => { setCategoria(item.name) }}
                   className={
                     cualName.name === item.name ? "bg-white/[0.15]" : ""
                   }

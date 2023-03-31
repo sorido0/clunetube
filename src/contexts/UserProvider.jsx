@@ -5,7 +5,15 @@ import { UserContext } from './UserContext';
 import { getVideoRapiAppi } from '../api/getVideoRapiAppi';
 
 
-const { valores, respVideoInicial } = await getvideo();
+// (async () => {
+    const { valores, respVideoInicial } = await getvideo();
+//     console.log(valores, respVideoInicial);
+//     return valores, respVideoInicial ;
+// })()
+
+
+
+
 
 
 export const UserProvider = ({ children }) => {
@@ -16,8 +24,9 @@ export const UserProvider = ({ children }) => {
     const [ resultados , setResultados ] = useState([]);
 
     useEffect(() => {
-      buscarvideosDe(categoria)
-    }, [setCategoria])
+        console.log(categoria)
+        buscarvideosDe(categoria)
+    }, [categoria])
     
 
     const mostrarMenu = () => {
