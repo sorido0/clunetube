@@ -36,7 +36,7 @@ export const Hearder = () => {
     const { mostrarMenu, loading } = useContext(UserContext);
 
     return (
-        <div className="sticky pt-2 pb-2 top-0 z-10 flex flex-row items-center justify-between h-14 px-4 md:px-5 bg-white dark:bg-black ">
+        <div className="sticky pt-2 pb-2 top-0 z-10 flex flex-row items-center justify-between h-14 px-4 md:px-5 bg-black dark:bg-black ">
             {
                 loading ? <Loading /> : null
             }
